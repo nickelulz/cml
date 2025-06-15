@@ -1,6 +1,8 @@
 #ifndef TENSOR_HEADER
 #define TENSOR_HEADER
 
+#include <stddef.h>
+
 /* simple linear algebra library */
 typedef struct {
   double *data;
@@ -8,9 +10,10 @@ typedef struct {
 } Tensor2D;
 
 /* basic operations */
+void      Tensor2D_print   ( Tensor2D *t );
 Tensor2D *Tensor2D_create  ( size_t rows, size_t cols );
 Tensor2D *Tensor2D_copy    ( Tensor2D *t );
-void      Tensor2D_destroy ( Tensor2D *t );
+void      Tensor2D_destroy ( Tensor2D **t );
 
 /* actual math operations */
 Tensor2D *Tensor2D_transpose  ( Tensor2D *t );

@@ -178,6 +178,54 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/regression.o: src/regression.c.o
+.PHONY : src/regression.o
+
+# target to build an object file
+src/regression.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/regression.c.o
+.PHONY : src/regression.c.o
+
+src/regression.i: src/regression.c.i
+.PHONY : src/regression.i
+
+# target to preprocess a source file
+src/regression.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/regression.c.i
+.PHONY : src/regression.c.i
+
+src/regression.s: src/regression.c.s
+.PHONY : src/regression.s
+
+# target to generate assembly for a file
+src/regression.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/regression.c.s
+.PHONY : src/regression.c.s
+
+src/tensor.o: src/tensor.c.o
+.PHONY : src/tensor.o
+
+# target to build an object file
+src/tensor.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/tensor.c.o
+.PHONY : src/tensor.c.o
+
+src/tensor.i: src/tensor.c.i
+.PHONY : src/tensor.i
+
+# target to preprocess a source file
+src/tensor.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/tensor.c.i
+.PHONY : src/tensor.c.i
+
+src/tensor.s: src/tensor.c.s
+.PHONY : src/tensor.s
+
+# target to generate assembly for a file
+src/tensor.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/tensor.c.s
+.PHONY : src/tensor.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -193,6 +241,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/regression.o"
+	@echo "... src/regression.i"
+	@echo "... src/regression.s"
+	@echo "... src/tensor.o"
+	@echo "... src/tensor.i"
+	@echo "... src/tensor.s"
 .PHONY : help
 
 

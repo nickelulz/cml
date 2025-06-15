@@ -6,6 +6,8 @@ cmake_policy(SET CMP0009 NEW)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/mufaro/Programming/cml/src/*.c")
 set(OLD_GLOB
   "/home/mufaro/Programming/cml/src/main.c"
+  "/home/mufaro/Programming/cml/src/regression.c"
+  "/home/mufaro/Programming/cml/src/tensor.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
