@@ -2,9 +2,11 @@
 #define REGRESSION_HEADER
 
 typedef {
-  double coefficient, intercept, r_squared;
+  double coefficient;
+  double intercept;
+  double r_squared;
 } RegressionResult;
 
-RegressionResult calculate_linear_regression(const double *x, const double *y, const size_t size);
+RegressionResult calculate_linear_regression ( const double *x, const double *y, const size_t size );
 
 #endif

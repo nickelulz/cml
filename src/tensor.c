@@ -19,16 +19,6 @@ Tensor2D_copy ( Tensor2D * t )
   new->data = memcpy(new->data, t->data, sizeof(t->data));
   return new;
 }
-
-Tensor2D *
-Tensor2D_transpose ( Tensor2D *t )
-{
-  Tensor2D *new = Tensor2D_create(t->cols, t->rows);
-  for (size_t r = 0; r < t->rows; ++r)
-    for (size_t c = 0; c < t->cols; ++c)
-      Tensor2D_set_index(new, c, r, Tensor2D_get_index(t, r, c));
-  return new;
-}
   
 void
 Tensor2D_destroy ( Tensor2D *t )
@@ -38,7 +28,62 @@ Tensor2D_destroy ( Tensor2D *t )
   &t = NULL;
 }
 
-/* data manipulation */
+/* actual math operations */
+Tensor2D *
+Tensor2D_transpose ( Tensor2D *t )
+{
+  Tensor2D *new = Tensor2D_create(t->cols, t->rows);
+  for (size_t r = 0; r < t->rows; ++r)
+    for (size_t c = 0; c < t->cols; ++c)
+      Tensor2D_set_index(new, c, r, Tensor2D_get_index(t, r, c));
+  return new;
+}
+
+Tensor2D *
+Tensor2D_mult ( Tensor2D *a, Tensor2D *b )
+{
+  if (a->cols != b->rows)
+    return NULL;
+  
+  Tensor2D *result = Tensor2D_create ( b->cols, a->rows );
+  
+  for (size_t i = 0; i < a->rows; ++i)
+    for (size_t j = 0; j < b->cols; ++j)
+      for (size_t k = 0; k < a->cols; ++k)
+        Tensor2D_set_index( result, i, j,
+                            Tensor2D_get_index( a, i, k ) *
+                            Tensor2D_get_index( b, k, j ) );
+
+  return result;
+}
+
+Tensor2D *
+Tensor2D_sq_inverse ( Tensor2D *t )
+{
+  /* tensor must be square */
+  if (t->rows != t->cols)
+    return NULL;
+
+  /* gauss-jordan elimination to calculate the inverse
+     https://en.wikipedia.org/wiki/Gaussian_elimination */
+  Tensor2D *intermediate_augment = Tensor2D_create( t->rows, t->cols + t->rows );
+
+  /* perform calculations */
+  
+  
+  /* copy data */
+  Tensor2D *sq_inv_result = Tensor2D_create ( t->rows, t->cols );
+  for (size_t r = 0; r < t->rows; ++r)
+    for (size_t c = 0; c < t->cols; ++c)
+      Tensor2D_set_index ( sq_inv_result, r, c,
+                           Tensor2D_get_index ( intermediate_augment, r + t->rows, c ) );
+  
+  /* free intermediate and return */
+  Tensor2D_destroy( intermediate_augment );
+  return sq_inv_result;
+}
+
+ /* data manipulation */
 void
 Tensor2D_fill_column ( Tensor2D *t, const size_t col, const double val )
 {

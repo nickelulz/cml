@@ -28,6 +28,6 @@ int main(int argc, char **argv)
 	   result.coefficient,
 	   result.intercept,
 	   result.r_squared);
-  gnuplot_plot_slope(fig, 1.0, 0.0, regression_label_buffer);
+  gnuplot_plot_slope(fig, result.slope, result.intercept, regression_label_buffer);
   sleep(10000);
 }

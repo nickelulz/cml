@@ -8,10 +8,14 @@ typedef struct {
 } Tensor2D;
 
 /* basic operations */
-Tensor2D *Tensor2D_create    ( size_t rows, size_t cols );
-Tensor2D *Tensor2D_copy      ( Tensor2D *t );
-Tensor2D *Tensor2D_transpose ( Tensor2D *t );
-void      Tensor2D_destroy   ( Tensor2D *t );
+Tensor2D *Tensor2D_create  ( size_t rows, size_t cols );
+Tensor2D *Tensor2D_copy    ( Tensor2D *t );
+void      Tensor2D_destroy ( Tensor2D *t );
+
+/* actual math operations */
+Tensor2D *Tensor2D_transpose  ( Tensor2D *t );
+Tensor2D *Tensor2D_mult       ( Tensor2D *a, Tensor2D *b );
+Tensor2D *Tensor2D_sq_inverse ( Tensor2D *t );
 
 /* data manipulation */
 void Tensor2D_fill_column ( Tensor2D *t, const size_t col, const double val );
