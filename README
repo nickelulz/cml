@@ -1,0 +1,16 @@
+simple implementation of least-squares linear regression
+in c from scratch (sort of) using gnuplot :)
+
+to install (debian-based):
+
+1. clone the repo
+  
+  $ git clone https://github.com/nickelulz/cml.git --recursive
+
+2. install required libraries
+  
+  $ sudo apt install build-essential gnuplot
+
+to run:
+
+  $ cd cml && make run
