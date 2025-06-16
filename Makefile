@@ -18,3 +18,4 @@ run: all
 clean:
 	@echo "[MAKE] Cleaning build directory..."
 	rm -rf $(BUILD_DIR)
+	rm gnuplot_tmp*
