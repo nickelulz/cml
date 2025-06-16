@@ -21,7 +21,7 @@ Tensor2D_print ( Tensor2D *t )
     for (size_t j = 0; j < t->cols; ++j) {
       // Print each element with a space separating them
       if (i > 0 && j == 0)
-	printf(" ");
+        printf(" ");
       printf(" %*.*f ", 5, 1, Tensor2D_get_index(t, i, j));
     }
     // Print a newline at the end of each row
@@ -93,7 +93,7 @@ Tensor2D_mult ( Tensor2D *a, Tensor2D *b )
     for (size_t j = 0; j < b->cols; ++j) {
       double sum = 0.0;
       for (size_t k = 0; k < a->cols; ++k)
-	  sum += Tensor2D_get_index(a, i, k) * Tensor2D_get_index(b, k, j);
+        sum += Tensor2D_get_index(a, i, k) * Tensor2D_get_index(b, k, j);
       Tensor2D_set_index(result, i, j, sum);
     }
   
@@ -150,62 +150,67 @@ Tensor2D_sq_inverse ( Tensor2D *t )
   if (t->rows != t->cols)
     return NULL;
 
+  /* copy t to a new tensor */
+  t = Tensor2D_copy( t );
+  
   /* gauss-jordan elimination to calculate the inverse
      https://en.wikipedia.org/wiki/Gaussian_elimination */
   Tensor2D *intermediate_augment = Tensor2D_create( t->rows, t->cols + t->rows );
   Tensor2D *ia = intermediate_augment;
-  
-  /* perform calculations
-     https://en.wikipedia.org/wiki/Gaussian_elimination#Pseudocode */
-  size_t pivot_row = 0, pivot_col = 0;
 
-  while ( pivot_row < t->rows && pivot_col < t->cols )
-  {
-    /* find the k-th pivot */
-    double pivot = 0;
-    size_t pivot_swap_row = 0;
+  /* copy the data to intermediate augment */
+  for ( size_t r = 0; r < t->rows; ++r ) {
+    for ( size_t c = 0; c < t->cols; ++c )
+      Tensor2D_set_index( ia, r, c, Tensor2D_get_index( t, r, c ) );
+
+    /* set up the identity matrix */
+    Tensor2D_set_index( ia, r, r + t->rows, 1 );
+  }
+
+  fprintf(stderr, "INTERMEDIATE AUGMENT TENSOR BEFORE\n");
+  Tensor2D_print( intermediate_augment );
     
-    for ( size_t r = 0; r < t->rows; ++r ) {
-      double cur = Tensor2D_get_index( t, r, pivot_col );
-      double abs_cur = fabs( cur );
-      
-      if ( abs_cur > pivot ) {
-	pivot = abs_cur;
-	pivot_swap_row = r;
+  /* forward elimination */
+  for ( size_t pivot = 0; pivot < t->rows; ++pivot ) {
+    /* find the pivot row (with the largest abs value in the column) */
+    size_t max_row = pivot;
+    double max_val = fabs( Tensor2D_get_index( ia, pivot, pivot ) );
+
+    for ( size_t r = pivot + 1; r < t->rows; ++r ) {
+      double val = fabs( Tensor2D_get_index( ia, r, pivot ) );
+      if ( val > max_val ) {
+        max_val = val;
+        max_row = r;
       }
     }
 
-    /* no pivot in this column, pass to the next column */
-    if ( pivot == 0 )
-      ++pivot_col;
-    
-    else {
-      Tensor2D_inplace_swap_rows ( ia, pivot_row, pivot_swap_row );
+    /* matrix is singular */
+    if (max_val == 0) {
+      Tensor2D_destroy( &t );
+      Tensor2D_destroy( &ia );
+      return NULL;
+    }
 
-      /* performed for all rows below the pivot */
-      for ( size_t r = pivot_row + 1; r < t->rows; ++r ) {
-	/* calculate the pivot ratio */
-	double ratio_numer = Tensor2D_get_index( t, r,         pivot_col );
-	double ratio_denom = Tensor2D_get_index( t, pivot_row, pivot_col );
-	double ratio_frac  = ratio_numer / ratio_denom;
+    /* swap pivot row */
+    Tensor2D_inplace_swap_rows( ia, pivot, max_row );
 
-	/* fill with zeroes for the lower part of the pivot column */
-	Tensor2D_set_index( t, r, pivot_col, 0 );
+    /* normalize pivot row */
+    Tensor2D_inplace_divide_row( ia, pivot, Tensor2D_get_index( ia, pivot, pivot ) );
 
-	/* do for all remaining elements in the current row */
-	for ( size_t c = pivot_col + 1; c < t->cols; ++c )
-	  Tensor2D_set_index( t, r, c,
-			      Tensor2D_get_index( t, r,         c ) -
-			      Tensor2D_get_index( t, pivot_row, c ) * ratio_frac);
-      }
+    /* eliminate other rows */
+    for (size_t r = 0; r < t->rows; ++r) {
+      if (r == pivot)
+        continue;
 
-      /* increase pivot row and column */
-      ++pivot_row;
-      ++pivot_col;
+      double factor = Tensor2D_get_index( ia, r, pivot );
+      for (size_t c = 0; c < ia->cols; ++c)
+        Tensor2D_set_index( ia, r, c,
+                            Tensor2D_get_index( ia, r, c ) -
+                            factor * Tensor2D_get_index( ia, pivot, c ) );
     }
   }
 
-  fprintf(stderr, "INTERMEDIATE AUGMENT TENSOR");
+  fprintf(stderr, "INTERMEDIATE AUGMENT TENSOR AFTER\n");
   Tensor2D_print( intermediate_augment );
   
   /* copy data */
@@ -216,6 +221,7 @@ Tensor2D_sq_inverse ( Tensor2D *t )
                            Tensor2D_get_index ( intermediate_augment, r, c + t->rows ) );
   
   /* free intermediate and return */
+  Tensor2D_destroy( &t );
   Tensor2D_destroy( &intermediate_augment );
   return sq_inv_result;
 }

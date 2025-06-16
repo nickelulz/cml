@@ -138,6 +138,18 @@ CMakeFiles/main.dir/src/main.c.o: /home/mufaro/Programming/cml/src/main.c \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/termios.h \
+  /usr/include/x86_64-linux-gnu/bits/termios.h \
+  /usr/include/x86_64-linux-gnu/bits/termios-struct.h \
+  /usr/include/x86_64-linux-gnu/bits/termios-c_cc.h \
+  /usr/include/x86_64-linux-gnu/bits/termios-c_iflag.h \
+  /usr/include/x86_64-linux-gnu/bits/termios-c_oflag.h \
+  /usr/include/x86_64-linux-gnu/bits/termios-baud.h \
+  /usr/include/x86_64-linux-gnu/bits/termios-c_cflag.h \
+  /usr/include/x86_64-linux-gnu/bits/termios-c_lflag.h \
+  /usr/include/x86_64-linux-gnu/bits/termios-tcflow.h \
+  /usr/include/x86_64-linux-gnu/bits/termios-misc.h \
+  /usr/include/x86_64-linux-gnu/sys/ttydefaults.h \
   /home/mufaro/Programming/cml/lib/gnuplot_i/src/gnuplot_i.h \
   /home/mufaro/Programming/cml/src/tensor.h \
   /home/mufaro/Programming/cml/src/regression.h
@@ -260,6 +272,20 @@ CMakeFiles/main.dir/src/tensor.c.o: /home/mufaro/Programming/cml/src/tensor.c \
 
 /home/mufaro/Programming/cml/src/regression.h:
 
+/usr/include/x86_64-linux-gnu/sys/ttydefaults.h:
+
+/usr/include/x86_64-linux-gnu/bits/termios-c_cflag.h:
+
+/usr/include/x86_64-linux-gnu/bits/termios-baud.h:
+
+/usr/include/x86_64-linux-gnu/bits/termios-c_iflag.h:
+
+/usr/include/x86_64-linux-gnu/bits/termios-c_oflag.h:
+
+/usr/include/x86_64-linux-gnu/bits/termios-c_cc.h:
+
+/usr/include/termios.h:
+
 /home/mufaro/Programming/cml/src/main.c:
 
 /usr/include/assert.h:
@@ -300,6 +326,8 @@ CMakeFiles/main.dir/src/tensor.c.o: /home/mufaro/Programming/cml/src/tensor.c \
 
 /home/mufaro/Programming/cml/src/tensor.h:
 
+/usr/include/x86_64-linux-gnu/bits/termios-tcflow.h:
+
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
@@ -336,6 +364,8 @@ CMakeFiles/main.dir/src/tensor.c.o: /home/mufaro/Programming/cml/src/tensor.c \
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
+/usr/include/x86_64-linux-gnu/bits/termios-misc.h:
+
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
@@ -367,6 +397,10 @@ CMakeFiles/main.dir/src/tensor.c.o: /home/mufaro/Programming/cml/src/tensor.c \
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
 /usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+
+/usr/include/x86_64-linux-gnu/bits/termios-c_lflag.h:
+
+/usr/include/x86_64-linux-gnu/bits/termios-struct.h:
 
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
@@ -405,6 +439,8 @@ CMakeFiles/main.dir/src/tensor.c.o: /home/mufaro/Programming/cml/src/tensor.c \
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
+/usr/include/x86_64-linux-gnu/bits/termios.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 

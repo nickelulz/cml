@@ -27,7 +27,7 @@ calculate_linear_regression ( double *x, double *y, const size_t size )
   fprintf( stderr, "X TENSOR TRANSPOSED\n");
   Tensor2D_print( x_tensor_transposed );
   
-  Tensor2D *x_gram = Tensor2D_mult( x_tensor, x_tensor_transposed );
+  Tensor2D *x_gram = Tensor2D_mult( x_tensor_transposed, x_tensor );
   fprintf( stderr, "X GRAM MATRIX\n" );
   Tensor2D_print( x_gram );
   
@@ -36,7 +36,7 @@ calculate_linear_regression ( double *x, double *y, const size_t size )
   Tensor2D_print( x_gram_inverse );
   
   Tensor2D *gram_inv_trans_prod = Tensor2D_mult( x_gram_inverse, x_tensor_transposed );
-  fprintf( stderr, "X GRAM INVERSE TRANSPOSITION PRODUCT" );
+  fprintf( stderr, "X GRAM INVERSE TRANSPOSITION PRODUCT\n" );
   Tensor2D_print( gram_inv_trans_prod );
   
   if (!gram_inv_trans_prod) {
@@ -61,6 +61,9 @@ calculate_linear_regression ( double *x, double *y, const size_t size )
   Tensor2D_destroy( &x_gram_inverse );
   Tensor2D_destroy( &gram_inv_trans_prod );
 
+  fprintf( stderr, "Regression successful! Final BETA Matrix:\n" );
+  Tensor2D_print( beta );
+  
   /* obtain slope and intercept from beta */
   double intercept = Tensor2D_get_index( beta, 0, 0 );
   double slope     = Tensor2D_get_index( beta, 1, 0 );
