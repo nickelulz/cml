@@ -8,6 +8,16 @@
 #include "tensor.h"
 #include "regression.h"
 
+void regression_example ();
+void classification_example ();
+
+int
+main ( int argc, char *argv[] )
+{
+  /* regression_example (); */
+  classification_example ();
+}
+
 static int
 getch ( void ) 
 {
@@ -24,13 +34,10 @@ getch ( void )
   return ch;
 }
 
-int
-main(int argc, char **argv)
-{
-  (void) argc;
-  (void) argv;
-  
-  const size_t size    = 10; 
+void
+regression_example ()
+{ 
+  const size_t size = 10; 
   double x[] = {1, 3, 4, 6,  7,  9,  11, 12, 14, 15};
   double y[] = {4, 7, 9, 12, 14, 18, 20, 24, 27, 29};
   
@@ -69,4 +76,25 @@ main(int argc, char **argv)
 
   /* end session */
   gnuplot_close(fig);
+}
+
+void
+classification_example ()
+{
+  /* load CIFAR 10 */
+  
+  Dataset *cifar = dataset_load_cifar("./data/cifar-10");
+  if (!cifar->loaded) {
+    fprintf(stderr, "failed to load CIFAR-10");
+    return;
+  }
+
+  Model *model = model_new ( cifar->image_size, cifar->num_classes );
+
+  model_train ( model, cifar );
+  model_test  ( model, cifar );
+
+  model_save_to_file(model, "cifar-10-model.bin");
+  
+  dataset_close( cifar );
 }
