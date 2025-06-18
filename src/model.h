@@ -2,6 +2,7 @@
 #define MODEL_HEADER
 
 #include <stdlib.h>
+#include <stdbool.h>
 #include "dataset.h"
 
 typedef struct {
@@ -11,7 +12,7 @@ typedef struct {
   size_t num_classes, most_likely;
 
   /* for error handling */
-  boolean failure;
+  bool failure;
 } Prediction;
 
 typedef struct {
@@ -20,10 +21,11 @@ typedef struct {
   float learning_rate;
 } Model;
 
-Model model_new     ( const size_t image_size, const size_t num_classes, float learning_rate );
-void  model_destroy ( Model **model );
-void  model_train   ( Model *model, Dataset *dataset, const size_t epochs );
-void  model_test    ( Model *model, Dataset *dataset );
+Model *model_new     ( const size_t image_size, const size_t num_classes, \
+                      float learning_rate );
+void   model_destroy ( Model **model );
+void   model_train   ( Model *model, Dataset *dataset, const size_t epochs );
+void   model_test    ( Model *model, Dataset *dataset );
 
 /* prediction */
 Prediction * model_predict      ( Model *model, Sample *sample );

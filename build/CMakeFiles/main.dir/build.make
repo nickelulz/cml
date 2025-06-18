@@ -69,10 +69,24 @@ include CMakeFiles/main.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/main.dir/flags.make
 
+CMakeFiles/main.dir/src/dataset.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/dataset.c.o: /home/mufaro/Programming/cml/src/dataset.c
+CMakeFiles/main.dir/src/dataset.c.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/src/dataset.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/dataset.c.o -MF CMakeFiles/main.dir/src/dataset.c.o.d -o CMakeFiles/main.dir/src/dataset.c.o -c /home/mufaro/Programming/cml/src/dataset.c
+
+CMakeFiles/main.dir/src/dataset.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/dataset.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mufaro/Programming/cml/src/dataset.c > CMakeFiles/main.dir/src/dataset.c.i
+
+CMakeFiles/main.dir/src/dataset.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/dataset.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mufaro/Programming/cml/src/dataset.c -o CMakeFiles/main.dir/src/dataset.c.s
+
 CMakeFiles/main.dir/src/main.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/main.c.o: /home/mufaro/Programming/cml/src/main.c
 CMakeFiles/main.dir/src/main.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/src/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/main.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/main.c.o -MF CMakeFiles/main.dir/src/main.c.o.d -o CMakeFiles/main.dir/src/main.c.o -c /home/mufaro/Programming/cml/src/main.c
 
 CMakeFiles/main.dir/src/main.c.i: cmake_force
@@ -83,10 +97,24 @@ CMakeFiles/main.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/main.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mufaro/Programming/cml/src/main.c -o CMakeFiles/main.dir/src/main.c.s
 
+CMakeFiles/main.dir/src/model.c.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/model.c.o: /home/mufaro/Programming/cml/src/model.c
+CMakeFiles/main.dir/src/model.c.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/src/model.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/model.c.o -MF CMakeFiles/main.dir/src/model.c.o.d -o CMakeFiles/main.dir/src/model.c.o -c /home/mufaro/Programming/cml/src/model.c
+
+CMakeFiles/main.dir/src/model.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/src/model.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mufaro/Programming/cml/src/model.c > CMakeFiles/main.dir/src/model.c.i
+
+CMakeFiles/main.dir/src/model.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/src/model.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mufaro/Programming/cml/src/model.c -o CMakeFiles/main.dir/src/model.c.s
+
 CMakeFiles/main.dir/src/regression.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/regression.c.o: /home/mufaro/Programming/cml/src/regression.c
 CMakeFiles/main.dir/src/regression.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/src/regression.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/src/regression.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/regression.c.o -MF CMakeFiles/main.dir/src/regression.c.o.d -o CMakeFiles/main.dir/src/regression.c.o -c /home/mufaro/Programming/cml/src/regression.c
 
 CMakeFiles/main.dir/src/regression.c.i: cmake_force
@@ -100,7 +128,7 @@ CMakeFiles/main.dir/src/regression.c.s: cmake_force
 CMakeFiles/main.dir/src/tensor.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/tensor.c.o: /home/mufaro/Programming/cml/src/tensor.c
 CMakeFiles/main.dir/src/tensor.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/main.dir/src/tensor.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/main.dir/src/tensor.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/src/tensor.c.o -MF CMakeFiles/main.dir/src/tensor.c.o.d -o CMakeFiles/main.dir/src/tensor.c.o -c /home/mufaro/Programming/cml/src/tensor.c
 
 CMakeFiles/main.dir/src/tensor.c.i: cmake_force
@@ -114,7 +142,7 @@ CMakeFiles/main.dir/src/tensor.c.s: cmake_force
 CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o: /home/mufaro/Programming/cml/lib/gnuplot_i/src/gnuplot_i.c
 CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o -MF CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o.d -o CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o -c /home/mufaro/Programming/cml/lib/gnuplot_i/src/gnuplot_i.c
 
 CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.i: cmake_force
@@ -127,7 +155,9 @@ CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.s: cmake_force
 
 # Object files for target main
 main_OBJECTS = \
+"CMakeFiles/main.dir/src/dataset.c.o" \
 "CMakeFiles/main.dir/src/main.c.o" \
+"CMakeFiles/main.dir/src/model.c.o" \
 "CMakeFiles/main.dir/src/regression.c.o" \
 "CMakeFiles/main.dir/src/tensor.c.o" \
 "CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o"
@@ -135,13 +165,15 @@ main_OBJECTS = \
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
+executable/main: CMakeFiles/main.dir/src/dataset.c.o
 executable/main: CMakeFiles/main.dir/src/main.c.o
+executable/main: CMakeFiles/main.dir/src/model.c.o
 executable/main: CMakeFiles/main.dir/src/regression.c.o
 executable/main: CMakeFiles/main.dir/src/tensor.c.o
 executable/main: CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o
 executable/main: CMakeFiles/main.dir/build.make
 executable/main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable executable/main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mufaro/Programming/cml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable executable/main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

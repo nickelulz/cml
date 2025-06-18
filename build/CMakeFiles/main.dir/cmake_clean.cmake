@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o"
   "CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o.d"
+  "CMakeFiles/main.dir/src/dataset.c.o"
+  "CMakeFiles/main.dir/src/dataset.c.o.d"
   "CMakeFiles/main.dir/src/main.c.o"
   "CMakeFiles/main.dir/src/main.c.o.d"
+  "CMakeFiles/main.dir/src/model.c.o"
+  "CMakeFiles/main.dir/src/model.c.o.d"
   "CMakeFiles/main.dir/src/regression.c.o"
   "CMakeFiles/main.dir/src/regression.c.o.d"
   "CMakeFiles/main.dir/src/tensor.c.o"

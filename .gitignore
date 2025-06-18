@@ -1,2 +1,3 @@
 build/
 gnuplot*
+cifar-10-model.bin

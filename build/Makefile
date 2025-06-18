@@ -154,6 +154,30 @@ lib/gnuplot_i/src/gnuplot_i.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.s
 .PHONY : lib/gnuplot_i/src/gnuplot_i.c.s
 
+src/dataset.o: src/dataset.c.o
+.PHONY : src/dataset.o
+
+# target to build an object file
+src/dataset.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dataset.c.o
+.PHONY : src/dataset.c.o
+
+src/dataset.i: src/dataset.c.i
+.PHONY : src/dataset.i
+
+# target to preprocess a source file
+src/dataset.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dataset.c.i
+.PHONY : src/dataset.c.i
+
+src/dataset.s: src/dataset.c.s
+.PHONY : src/dataset.s
+
+# target to generate assembly for a file
+src/dataset.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dataset.c.s
+.PHONY : src/dataset.c.s
+
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
@@ -177,6 +201,30 @@ src/main.s: src/main.c.s
 src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.s
 .PHONY : src/main.c.s
+
+src/model.o: src/model.c.o
+.PHONY : src/model.o
+
+# target to build an object file
+src/model.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/model.c.o
+.PHONY : src/model.c.o
+
+src/model.i: src/model.c.i
+.PHONY : src/model.i
+
+# target to preprocess a source file
+src/model.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/model.c.i
+.PHONY : src/model.c.i
+
+src/model.s: src/model.c.s
+.PHONY : src/model.s
+
+# target to generate assembly for a file
+src/model.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/model.c.s
+.PHONY : src/model.c.s
 
 src/regression.o: src/regression.c.o
 .PHONY : src/regression.o
@@ -238,9 +286,15 @@ help:
 	@echo "... lib/gnuplot_i/src/gnuplot_i.o"
 	@echo "... lib/gnuplot_i/src/gnuplot_i.i"
 	@echo "... lib/gnuplot_i/src/gnuplot_i.s"
+	@echo "... src/dataset.o"
+	@echo "... src/dataset.i"
+	@echo "... src/dataset.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/model.o"
+	@echo "... src/model.i"
+	@echo "... src/model.s"
 	@echo "... src/regression.o"
 	@echo "... src/regression.i"
 	@echo "... src/regression.s"

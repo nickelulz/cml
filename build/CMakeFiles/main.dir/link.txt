@@ -1,1 +1,1 @@
-/usr/bin/cc CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/regression.c.o CMakeFiles/main.dir/src/tensor.c.o CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o -o executable/main  -lm 
+/usr/bin/cc CMakeFiles/main.dir/src/dataset.c.o CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/model.c.o CMakeFiles/main.dir/src/regression.c.o CMakeFiles/main.dir/src/tensor.c.o CMakeFiles/main.dir/lib/gnuplot_i/src/gnuplot_i.c.o -o executable/main  -lm 

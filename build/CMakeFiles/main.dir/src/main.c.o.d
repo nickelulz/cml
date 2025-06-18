@@ -70,5 +70,8 @@ CMakeFiles/main.dir/src/main.c.o: /home/mufaro/Programming/cml/src/main.c \
  /usr/include/x86_64-linux-gnu/bits/termios-misc.h \
  /usr/include/x86_64-linux-gnu/sys/ttydefaults.h \
  /home/mufaro/Programming/cml/lib/gnuplot_i/src/gnuplot_i.h \
+ /home/mufaro/Programming/cml/src/dataset.h \
+ /usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h \
+ /home/mufaro/Programming/cml/src/model.h \
  /home/mufaro/Programming/cml/src/tensor.h \
  /home/mufaro/Programming/cml/src/regression.h

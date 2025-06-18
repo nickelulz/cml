@@ -5,6 +5,8 @@
 #include <termios.h>
 #include "gnuplot_i.h"
 
+#include "dataset.h"
+#include "model.h"
 #include "tensor.h"
 #include "regression.h"
 
@@ -14,6 +16,9 @@ void classification_example ();
 int
 main ( int argc, char *argv[] )
 {
+  (void) argc;
+  (void) argv;
+  
   /* regression_example (); */
   classification_example ();
 }
@@ -84,17 +89,18 @@ classification_example ()
   /* load CIFAR 10 */
   
   Dataset *cifar = dataset_load_cifar("./data/cifar-10");
-  if (!cifar->loaded) {
+  if (cifar->failure) {
     fprintf(stderr, "failed to load CIFAR-10");
     return;
   }
 
-  Model *model = model_new ( cifar->image_size, cifar->num_classes );
+  Model *model = model_new ( cifar->image_size, cifar->num_classes, 0.001 );
 
-  model_train ( model, cifar );
+  model_train ( model, cifar, 10 );
   model_test  ( model, cifar );
 
-  model_save_to_file(model, "cifar-10-model.bin");
-  
-  dataset_close( cifar );
+  model_save_to_file ( model, "cifar-10-model.bin" );
+
+  model_destroy ( &model );
+  dataset_close ( &cifar );
 }
