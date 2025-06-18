@@ -1,7 +1,0 @@
-#include "dataset.h"
-
-Dataset *
-dataset_load_cifar ( const char *filepath )
-{
-  
-}
