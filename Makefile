@@ -4,6 +4,10 @@ EXECUTABLE := $(BUILD_DIR)/executable/main
 .PHONY: all clean run
 
 # Default target: build the project
+debug: all
+	@echo "[MAKE] Debugging $(EXECUTABLE).."
+	@valgrind $(EXECUTABLE) --track-origins=yes --leak-check=full
+
 all:
 	@echo "[MAKE] Configuring and building project..."
 	cmake -S . -B $(BUILD_DIR)

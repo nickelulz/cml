@@ -35,4 +35,7 @@ void         prediction_destroy ( Prediction **pred );
 Model * model_load_from_file ( const char *filepath );
 void    model_save_to_file   ( Model *model, const char *filepath );
 
+/* math functions */
+void softmax ( float *input, float *output, size_t len );
+
 #endif

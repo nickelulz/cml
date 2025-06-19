@@ -263,7 +263,6 @@ CMakeFiles/main.dir/src/model.c.o: /home/mufaro/Programming/cml/src/model.c \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
   /usr/include/strings.h \
-  /home/mufaro/Programming/cml/src/model.h \
   /usr/include/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
@@ -293,8 +292,10 @@ CMakeFiles/main.dir/src/model.c.o: /home/mufaro/Programming/cml/src/model.c \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /home/mufaro/Programming/cml/src/model.h \
   /usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h \
-  /home/mufaro/Programming/cml/src/dataset.h
+  /home/mufaro/Programming/cml/src/dataset.h \
+  /home/mufaro/Programming/cml/src/util.h
 
 CMakeFiles/main.dir/src/regression.c.o: /home/mufaro/Programming/cml/src/regression.c \
   /usr/include/stdc-predef.h \
@@ -401,6 +402,8 @@ CMakeFiles/main.dir/src/tensor.c.o: /home/mufaro/Programming/cml/src/tensor.c \
 /usr/lib/gcc/x86_64-linux-gnu/12/include/float.h:
 
 /home/mufaro/Programming/cml/src/tensor.c:
+
+/home/mufaro/Programming/cml/src/util.h:
 
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
