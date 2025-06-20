@@ -74,4 +74,5 @@ CMakeFiles/main.dir/src/main.c.o: /home/mufaro/Programming/cml/src/main.c \
  /usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h \
  /home/mufaro/Programming/cml/src/model.h \
  /home/mufaro/Programming/cml/src/tensor.h \
- /home/mufaro/Programming/cml/src/regression.h
+ /home/mufaro/Programming/cml/src/regression.h \
+ /home/mufaro/Programming/cml/src/util.h

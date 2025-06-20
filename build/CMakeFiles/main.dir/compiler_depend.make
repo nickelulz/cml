@@ -222,7 +222,8 @@ CMakeFiles/main.dir/src/main.c.o: /home/mufaro/Programming/cml/src/main.c \
   /usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h \
   /home/mufaro/Programming/cml/src/model.h \
   /home/mufaro/Programming/cml/src/tensor.h \
-  /home/mufaro/Programming/cml/src/regression.h
+  /home/mufaro/Programming/cml/src/regression.h \
+  /home/mufaro/Programming/cml/src/util.h
 
 CMakeFiles/main.dir/src/model.c.o: /home/mufaro/Programming/cml/src/model.c \
   /usr/include/stdc-predef.h \
@@ -403,13 +404,13 @@ CMakeFiles/main.dir/src/tensor.c.o: /home/mufaro/Programming/cml/src/tensor.c \
 
 /home/mufaro/Programming/cml/src/tensor.c:
 
-/home/mufaro/Programming/cml/src/util.h:
-
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
 /usr/include/math.h:
+
+/home/mufaro/Programming/cml/src/util.h:
 
 /home/mufaro/Programming/cml/src/regression.h:
 

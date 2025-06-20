@@ -9,6 +9,7 @@
 #include "model.h"
 #include "tensor.h"
 #include "regression.h"
+#include "util.h"
 
 void regression_example ();
 void classification_example ();
@@ -94,14 +95,31 @@ classification_example ()
     return;
   }
   
-  Model *model = model_new ( cifar->image_size, cifar->num_classes, 0.0001 );
+  Model *model = model_new ( cifar->image_size, cifar->num_classes, 0.001 );
 
   model_train ( model, cifar, 10 );
-  
-  Prediction *pred = model_predict ( model, cifar->train_batches[0]->samples[0] );
-  for ( size_t i = 0; i < cifar->num_classes; ++i )
-    printf( "score[%s] = %.3f\n", cifar->label_map[i], pred->scores[i] );
 
+  printf( "Total Guesses: %zu\n", model->total_guesses );
+
+  printf( "Guess Dist.:        [" );
+  for ( size_t i = 0; i < model->num_classes; ++i )
+    printf( "% 6zu ", model->guess_dist[i] );
+  printf( "]\n" );
+  
+  float *guess_prob_dist = calloc( model->num_classes, sizeof(float) );
+  for ( size_t i = 0; i < model->num_classes; ++i )
+    guess_prob_dist[i] = ( model->guess_dist[i] / (float) model->total_guesses );
+  printf( "Guess Prob. Dist.:  " );
+  print_array( guess_prob_dist, model->num_classes );
+  free( guess_prob_dist );
+  guess_prob_dist = NULL;
+
+  Sample *test_sample = cifar->train_batches[0]->samples[0];
+  Prediction *pred = model_predict ( model, test_sample );
+  for ( size_t i = 0; i < cifar->num_classes; ++i )
+    printf( "score[% 10s] = %.3lf\n", cifar->label_map[i], pred->scores[i] );
+  printf( "True Class: %s\n", cifar->label_map[ test_sample->label ] );
+  
   model_test  ( model, cifar );
   model_save_to_file ( model, "cifar-10-model.bin" );
   

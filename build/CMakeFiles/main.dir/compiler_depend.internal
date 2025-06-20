@@ -226,6 +226,7 @@ CMakeFiles/main.dir/src/main.c.o
  /home/mufaro/Programming/cml/src/model.h
  /home/mufaro/Programming/cml/src/tensor.h
  /home/mufaro/Programming/cml/src/regression.h
+ /home/mufaro/Programming/cml/src/util.h
 
 CMakeFiles/main.dir/src/model.c.o
  /home/mufaro/Programming/cml/src/model.c

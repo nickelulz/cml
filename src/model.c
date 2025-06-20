@@ -16,6 +16,9 @@ model_new ( const size_t image_size, const size_t num_classes, float learning_ra
   new->num_classes   = num_classes;
   new->learning_rate = learning_rate;
 
+  new->guess_dist    = calloc( num_classes, sizeof(size_t) );
+  new->total_guesses = 0;
+  
   model_reset( new );
   
   return new;
@@ -35,8 +38,9 @@ void
 model_destroy ( Model **model )
 {
   if ( model && *model ) {
-    free( (*model)->weights );
-    free( (*model)->biases );
+    free( (*model)->weights    );
+    free( (*model)->biases     );
+    free( (*model)->guess_dist );
     free( *model );
     *model = NULL;
   }
@@ -52,6 +56,7 @@ model_train ( Model *model, Dataset *dataset, const size_t epochs )
     size_t total_samples = 0;
     
     for ( size_t batch_index = 0; batch_index < dataset->train_batches_len; ++batch_index ) {
+      printf( "Reading batch %zu/%zu..\n", batch_index + 1, dataset->train_batches_len );
       Batch *batch = dataset->train_batches[batch_index];
 
       for ( size_t sample_index = 0; sample_index < batch->num_samples; ++sample_index ) {
@@ -104,7 +109,8 @@ model_train ( Model *model, Dataset *dataset, const size_t epochs )
     if (total_samples == 0)
       fprintf(stderr, "no samples were seen!");
     else 
-      printf("Epoch %zu/%zu, Samples: %zu, Loss: %.4f\n", epoch + 1, epochs, total_samples, total_loss / total_samples);
+      printf("Epoch %zu/%zu, Samples: %zu, Loss: %.4f\n",
+             epoch + 1, epochs, total_samples, total_loss / total_samples);
   }
 }
 
@@ -116,9 +122,10 @@ model_test ( Model *model, Dataset *dataset )
   int correct = 0;
   double total_loss = 0.0;
   size_t total_samples = 0;
-  float *confusion_matrix = malloc ( sizeof(float) * model->num_classes * model->num_classes );
+  float *confusion_matrix = calloc ( model->num_classes * model->num_classes, sizeof(float) );
   
   for ( size_t batch_index = 0; batch_index < dataset->test_batches_len; ++batch_index ) {
+    printf( "Reading batch %zu/%zu..\n", batch_index + 1, dataset->test_batches_len );
     Batch *batch = dataset->test_batches[ batch_index ];
     total_samples += batch->num_samples;
     
@@ -149,7 +156,7 @@ model_test ( Model *model, Dataset *dataset )
   printf("\nConfusion Matrix:\n");
   for ( size_t i = 0; i < model->num_classes; i++ ) {
     for ( size_t j = 0; j < model->num_classes; j++ )
-      printf("%.4f ", confusion_matrix[i * model->num_classes + j]);
+      printf( "%3.0f ", confusion_matrix[i * model->num_classes + j] );
     printf("\n");
   }
   
@@ -173,15 +180,6 @@ softmax (float *input, float *output, size_t len)
     
   for (size_t i = 0; i < len; i++)
     output[i] /= sum;
-}
-
-static inline void
-print_array ( float *arr, size_t len )
-{
-  printf("[");
-  for ( size_t i = 0; i < len; ++i )
-    printf( "% 05.3f ", arr[i] );
-  printf("]\n");
 }
 
 Prediction *
@@ -215,6 +213,9 @@ model_predict ( Model *model, Sample *sample )
     }
   pred->most_likely = most_likely;
 
+  ++model->guess_dist[ most_likely ];
+  ++model->total_guesses;
+  
   if ( debug_counter < 20 )
   {
     printf( "True Class:    %zu\n", sample->label );

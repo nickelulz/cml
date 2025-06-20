@@ -19,6 +19,10 @@ typedef struct {
   double *weights, *biases;
   size_t image_size, num_classes;
   float learning_rate;
+
+  /* model metrics */
+  size_t *guess_dist;
+  size_t total_guesses;
 } Model;
 
 Model *model_new ( const size_t image_size, const size_t num_classes, \
