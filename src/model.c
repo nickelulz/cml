@@ -15,8 +15,20 @@ model_new ( const size_t image_size, const size_t num_classes, float learning_ra
   new->image_size    = image_size;
   new->num_classes   = num_classes;
   new->learning_rate = learning_rate;
+
+  model_reset( new );
   
   return new;
+}
+
+void
+model_reset ( Model *model )
+{
+  /* initialize the weights with random values */
+  for ( size_t i = 0; i < model->num_classes * model->image_size; ++i )
+    model->weights[i] = ( rand() / (double) RAND_MAX ) * 0.1 - 0.05;
+
+  memset( model->biases, 0, model->num_classes );
 }
 
 void
@@ -32,14 +44,8 @@ model_destroy ( Model **model )
 
 void
 model_train ( Model *model, Dataset *dataset, const size_t epochs )
-{
+{ 
   printf( "Beginning training..\n" );
-
-  /* initialize the weights with random values */
-  for ( size_t i = 0; i < model->num_classes * model->image_size; ++i )
-    model->weights[i] = ( rand() / (double) RAND_MAX ) * 0.1 - 0.05;
-
-  memset( model->biases, 0, model->num_classes );
   
   for ( size_t epoch = 0; epoch < epochs; ++epoch ) {
     double total_loss = 0;
@@ -59,8 +65,11 @@ model_train ( Model *model, Dataset *dataset, const size_t epochs )
         
         ++total_samples;
 
-        printf("error: ");
-        
+	static unsigned int error_print_counter = 0;
+
+	if ( error_print_counter < 20 )
+	  printf( "Error:          [" );
+	
         /* compute losses and gradients */
         for ( size_t class_index = 0; class_index < dataset->num_classes; ++class_index ) {
           bool correct = class_index == sample->label;
@@ -68,12 +77,13 @@ model_train ( Model *model, Dataset *dataset, const size_t epochs )
 
           double error;
           if ( correct ) {
-            error = predicted - 1.0;
-            total_loss += -log( predicted + 1e-9 );
-          } else
             error = -predicted;
+            total_loss += -log( predicted );
+          } else
+            error = predicted;
 
-          printf( "%.3f ", error );
+	  if (error_print_counter < 20)
+	    printf( "% 05.3lf ", error );
           
           /* update weights and biases in the model */
           for ( size_t k = 0; k < sample->image_size; ++k )
@@ -82,7 +92,10 @@ model_train ( Model *model, Dataset *dataset, const size_t epochs )
           model->biases[ class_index ] -= model->learning_rate * error;
         }
 
-        printf("\n");
+	if ( error_print_counter < 20 )
+	  printf("]\n\n");
+	
+	++error_print_counter;
 
         prediction_destroy( &pred );
       }
@@ -145,13 +158,7 @@ model_test ( Model *model, Dataset *dataset )
 /* https://en.wikipedia.org/wiki/Softmax_function#Reinforcement_learning */
 void
 softmax (float *input, float *output, size_t len)
-{
-  printf("SOFTMAX\n");
-  printf("input: ");
-  for ( size_t i = 0; i < len; ++i )
-    printf("%.3f ", input[i]);
-  printf("\n");
-  
+{  
   float max_val = input[0];
   
   for (size_t i = 1; i < len; i++)
@@ -166,17 +173,22 @@ softmax (float *input, float *output, size_t len)
     
   for (size_t i = 0; i < len; i++)
     output[i] /= sum;
+}
 
-  printf("output: ");
+static inline void
+print_array ( float *arr, size_t len )
+{
+  printf("[");
   for ( size_t i = 0; i < len; ++i )
-    printf("%.3f ", output[i]);
-  printf("\n");
+    printf( "% 05.3f ", arr[i] );
+  printf("]\n");
 }
 
 Prediction *
 model_predict ( Model *model, Sample *sample )
 {
-
+  static unsigned int debug_counter = 0;
+  
   float *scores_raw = calloc ( model->num_classes, sizeof(float) );
   
   Prediction *pred = malloc ( sizeof(Prediction) );
@@ -202,6 +214,29 @@ model_predict ( Model *model, Sample *sample )
       highest_score = pred->scores[i];
     }
   pred->most_likely = most_likely;
+
+  if ( debug_counter < 20 )
+  {
+    printf( "True Class:    %zu\n", sample->label );
+    printf( "Guessed Class: %zu\n", pred->most_likely );
+    printf( "Correct Guess: %s\n", pred->most_likely == sample->label ? "YES" : "NO" );
+    
+    printf( "Biases (x1000): " );
+
+    float *biases = calloc( model->num_classes, sizeof(float) );
+    for (size_t i = 0; i < model->num_classes; ++i)
+      biases[i] = (float) model->biases[i] * 1000;
+    
+    print_array( biases, model->num_classes );
+    free(biases);
+    
+    printf( "Logits:         " );
+    print_array( scores_raw, model->num_classes );
+    printf( "Probabilities:  " );
+    print_array( pred->scores, model->num_classes );
+  }
+  
+  ++debug_counter;
   
   free( scores_raw );
   

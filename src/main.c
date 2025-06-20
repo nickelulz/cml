@@ -94,19 +94,16 @@ classification_example ()
     return;
   }
   
-  Model *model = model_new ( cifar->image_size, cifar->num_classes, 0.001 );
+  Model *model = model_new ( cifar->image_size, cifar->num_classes, 0.0001 );
 
-  model_train( model, cifar, 1 );
+  model_train ( model, cifar, 10 );
   
   Prediction *pred = model_predict ( model, cifar->train_batches[0]->samples[0] );
   for ( size_t i = 0; i < cifar->num_classes; ++i )
     printf( "score[%s] = %.3f\n", cifar->label_map[i], pred->scores[i] );
-  
-  /*
-  model_train ( model, cifar, 10 );
+
   model_test  ( model, cifar );
   model_save_to_file ( model, "cifar-10-model.bin" );
-  */
   
   model_destroy ( &model );
   dataset_close ( &cifar );
